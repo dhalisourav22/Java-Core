@@ -23,7 +23,6 @@ public class Test {
         System.out.println("Is that contain Arpita ? \nAnswer is : "+name.contains("Arpita"));
         System.out.println("The value is in 3 Index : "+name.get(3));
         name.set(0,"Hridoy" );
-        System.out.println("Stack is : "+name);
-        
+        System.out.println("Stack is : "+name);        
     }
 }
