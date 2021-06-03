@@ -1,14 +1,13 @@
 package NaiveGaussElemination;
 
-public class Test {
+public class Test{
     
  
   public static int N = 3;
  
   // function to get matrix content
   static void gaussianElimination(double mat[][])
-  {
- 
+  { 
     /* reduction into r.e.f. */
     int singular_flag = forwardElim(mat);
  
