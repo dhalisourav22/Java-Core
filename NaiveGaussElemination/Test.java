@@ -1,6 +1,6 @@
 package NaiveGaussElemination;
 
-public class GFG {
+public class Test {
     
  
   public static int N = 3;
