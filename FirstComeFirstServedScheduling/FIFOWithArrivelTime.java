@@ -78,7 +78,8 @@ public class FIFOWithArrivelTime implements Comparable<FIFOWithArrivelTime> {
                 }   
                 System.out.println("\n\nAverage Waiting Time : "+averageWaitingTime/numberOfProcess+" Unit.");
                 isError = false;
-            }catch(Exception e){
+            }
+            catch(Exception e){
                 System.out.println("\n_______________________________________________________\n");
                 System.out.println("Please Enter A Valid Input. Try Again From Beganing!");
                 System.out.println("_______________________________________________________\n");
