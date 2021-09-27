@@ -60,6 +60,7 @@ public class ZeroOneKnapsack {
                         }
                     }
                 }
+                
                 System.out.println("\n\n_______________________________________________________\n");
                 System.out.println("Solution : ");
                 System.out.println("_______________________________________________________\n");
