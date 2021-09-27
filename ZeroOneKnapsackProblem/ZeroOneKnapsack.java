@@ -49,13 +49,16 @@ public class ZeroOneKnapsack {
                 for (int row = 1; row <= totalNumberOfItem; row++) {
                     for (int column = 0; column <= maxWeightOfKnapsack; column++) {
 
-                        if (k[row - 1].weightOfItem <= column) {
+                        if (k[row - 1].weightOfItem <= column) {                            
                             if ((k[row - 1].valueOfItem + knapsackCell[row - 1][column - (int) k[row - 1].weightOfItem]) > knapsackCell[row - 1][column]) {
                                 knapsackCell[row][column] = k[row - 1].valueOfItem + knapsackCell[row - 1][column - (int) k[row - 1].weightOfItem];
-                            } else {    //(k[row-1].valueOfItem + knapsackCell[row-1][column-(int) k[row-1].weightOfItem]) <= knapsackCell[row-1][column])
+                            } 
+                            
+                            else {    //(k[row-1].valueOfItem + knapsackCell[row-1][column-(int) k[row-1].weightOfItem]) <= knapsackCell[row-1][column])
                                 knapsackCell[row][column] = knapsackCell[row - 1][column];
-                            }
-                        } else {
+                            }                            
+                        } 
+                        else {
                             knapsackCell[row][column] = knapsackCell[row - 1][column];
                         }
                     }
