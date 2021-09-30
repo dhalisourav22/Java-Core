@@ -6,7 +6,7 @@ public class Bisection {
         
         while(Math.abs(error)>trueError && iterationNumber<15 && f(c)!=0){   //If any condition of those three condition will be break, then the loop must be end.
             
-            cPrev = c;       //Previous Root (Relative Error) This Is Also Need For Final Answer (Root).
+            cPrev = c;       //Previous Root (Relative Error) And This Is Also Need For Final Answer (Root).
             c = (a+b)/2;
             
             iterationNumber++;
