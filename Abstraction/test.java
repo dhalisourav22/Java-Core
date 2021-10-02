@@ -8,6 +8,5 @@ public class test {
         ms.message();
         ms = new rahim();
         ms.message();
-
     }
 }
