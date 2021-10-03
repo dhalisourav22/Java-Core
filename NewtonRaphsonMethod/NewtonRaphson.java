@@ -26,7 +26,7 @@ public class NewtonRaphson {
                     System.out.println("f(x"+iterationNumber+") : "+f(x0));
                     System.out.println("f'(x"+iterationNumber+") : "+fd(x0));
                     System.out.println("X"+(iterationNumber+1)+" : "+(x0 - (f(x0)/fd(x0))));
-                    System.out.println("Error : "+df3.format(error*100)+"%");            
+                    System.out.println("Error : "+df3.format(Math.abs(error*100))+"%");            
             
                     if(Math.abs(error)<trueError){
                         break;
