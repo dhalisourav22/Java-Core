@@ -75,9 +75,8 @@ public class FractionalKnapsack implements Comparable<FractionalKnapsack>{
                             capacityOfKnapsack -= (k[i].weightOfItem/k[i].weightOfItem);                    
                         }
                         while((k[i].weightOfItem/k[i].weightOfItem)<= capacityOfKnapsack);
-                    }
-                    
-                }
+                    }                    
+                }       
                 
                 System.out.println("\n\n_______________________________________________________\n");
                 System.out.println("Solution : ");
