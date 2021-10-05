@@ -1,6 +1,9 @@
 //Dynamic Approach.
 package ZeroOneKnapsackProblem;
 
+import java.util.ArrayList;
+import java.util.Collections;
+
 public class ZeroOneKnapsack {
 
     String nameOfItem;
@@ -49,16 +52,13 @@ public class ZeroOneKnapsack {
                 for (int row = 1; row <= totalNumberOfItem; row++) {
                     for (int column = 0; column <= maxWeightOfKnapsack; column++) {
 
-                        if (k[row - 1].weightOfItem <= column) {                            
+                        if (k[row - 1].weightOfItem <= column) {
                             if ((k[row - 1].valueOfItem + knapsackCell[row - 1][column - (int) k[row - 1].weightOfItem]) > knapsackCell[row - 1][column]) {
                                 knapsackCell[row][column] = k[row - 1].valueOfItem + knapsackCell[row - 1][column - (int) k[row - 1].weightOfItem];
-                            } 
-                            
-                            else {    //(k[row-1].valueOfItem + knapsackCell[row-1][column-(int) k[row-1].weightOfItem]) <= knapsackCell[row-1][column])
+                            } else {    //(k[row-1].valueOfItem + knapsackCell[row-1][column-(int) k[row-1].weightOfItem]) <= knapsackCell[row-1][column])
                                 knapsackCell[row][column] = knapsackCell[row - 1][column];
-                            }                            
-                        } 
-                        else {
+                            }
+                        } else {
                             knapsackCell[row][column] = knapsackCell[row - 1][column];
                         }
                     }
@@ -76,7 +76,30 @@ public class ZeroOneKnapsack {
                     System.out.println("");
                 }
                 System.out.println("\n\n");
+                
+                ArrayList<String> pickingItemName = new ArrayList<>();
+                
+                while(totalNumberOfItem>0 && maxWeightOfKnapsack>0){
+                    if(knapsackCell[totalNumberOfItem][maxWeightOfKnapsack]!= knapsackCell[totalNumberOfItem-1][maxWeightOfKnapsack]){
 
+//                        System.out.println(k[totalNumberOfItem-1].nameOfItem);
+                        pickingItemName.add(k[totalNumberOfItem-1].nameOfItem);
+                        
+                        maxWeightOfKnapsack -=k[totalNumberOfItem-1].weightOfItem;
+                        totalNumberOfItem--;
+                    }else{
+                        totalNumberOfItem--;
+                    }  
+                }
+                
+                Collections.reverse(pickingItemName);  //Help of collections class.
+                
+                System.out.print("Taken Item : ");
+                for(String x : pickingItemName){
+                    System.out.print(x+", ");
+                }
+                System.out.print("\b\b.\n\n\n");
+                
                 isError = false;
             } catch (Exception e) {
                 System.out.println("\n_______________________________________________________\n");
