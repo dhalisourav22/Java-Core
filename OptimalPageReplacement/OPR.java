@@ -1,7 +1,6 @@
 package OptimalPageReplacement;
 
 public class OPR {
-
     public static void main(String[] args) {
         boolean isError = true;
         do {
