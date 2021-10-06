@@ -1,7 +1,11 @@
 //Greedy Approach.
 package FractionalKnapsackProblem;
 
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.IOException;
 import java.util.Arrays;
+import java.util.Formatter;
 import java.util.Scanner;
 
 public class FractionalKnapsack implements Comparable<FractionalKnapsack>{
@@ -40,11 +44,11 @@ public class FractionalKnapsack implements Comparable<FractionalKnapsack>{
                 System.out.println("Please Enter Details About Item..!"); 
                 System.out.println("_______________________________________________________");
         
-                FractionalKnapsack[] k = new FractionalKnapsack[numberOfItem];
+                FractionalKnapsack[] k = new FractionalKnapsack[numberOfItem];  //Array Of Object.
                 String iName;
                 double iWeight,iValue, fraction;
         
-                for (int i = 0; i < numberOfItem; i++) {
+                for (int i = 0; i < numberOfItem; i++) {  //Loop For Taking Input.
                     System.out.print("\nEnter "+(i+1)+" Item Name : ");
                     iName = input.next();
                     System.out.print("Enter "+(i+1)+" Item Weight : ");
@@ -52,40 +56,68 @@ public class FractionalKnapsack implements Comparable<FractionalKnapsack>{
                     System.out.print("Enter "+(i+1)+" Item Value : ");
                     iValue = input.nextDouble();
                     
-                    fraction = iValue/iWeight;                    
-                    k[i] = new FractionalKnapsack(iName,iWeight,iValue,fraction);
+                    fraction = iValue/iWeight;           //Initialized Here Directly.         
+                    k[i] = new FractionalKnapsack(iName,iWeight,iValue,fraction);   
                 } 
                 
                 Arrays.sort(k);  
         
-                String pickingItemName =" ";
-                double getingValue = 0;
+                String pickingItemName =" ";  
+                double getingValue = 0;   
         
-                for (int i = 0; i < numberOfItem; i++) {
+                for (int i = 0; i < numberOfItem; i++) {  //Here We Do The Main Work
                     
                     if(k[i].weightOfItem <= capacityOfKnapsack){
-                        pickingItemName += k[i].nameOfItem+","; 
-                        getingValue += k[i].valueOfItem;
-                        capacityOfKnapsack -= k[i].weightOfItem;
+                        pickingItemName += k[i].nameOfItem+", ";   
+                        getingValue += k[i].valueOfItem;  
+                        capacityOfKnapsack -= k[i].weightOfItem;  //Decrease The Size Of Knapsack(By Taking Item Weight).
                     }                    
-                    else if((k[i].weightOfItem/k[i].weightOfItem)<= capacityOfKnapsack){
-                        pickingItemName += k[i].nameOfItem+",";                        
+                    else if((k[i].weightOfItem/k[i].weightOfItem)<= capacityOfKnapsack){   
+                        pickingItemName += k[i].nameOfItem+".";    //Storing The Name Of Taking Item OutSide The Do While Loop. Because We Need This Name Once.              
                         do{
-                            getingValue += k[i].valueOfItem/k[i].weightOfItem;
-                            capacityOfKnapsack -= (k[i].weightOfItem/k[i].weightOfItem);                    
-                        }
-                        while((k[i].weightOfItem/k[i].weightOfItem)<= capacityOfKnapsack);
+                            getingValue += k[i].valueOfItem/k[i].weightOfItem;   
+                            capacityOfKnapsack -= (k[i].weightOfItem/k[i].weightOfItem);       //Decrease The Size Of Knapsack(By Taking Item Per Unit).
+                        } while((k[i].weightOfItem/k[i].weightOfItem)<= capacityOfKnapsack);
                     }                    
-                }       
+                }
                 
-                System.out.println("\n\n_______________________________________________________\n");
-                System.out.println("Solution : ");
-                System.out.println("_______________________________________________________\n");
-                System.out.println("\nName Of Item's Are : "+pickingItemName+"\b.\nToal Profit Is : "+getingValue+".\n\n\n");
-            
+                //For File Output Or File Write(File Output Start).                
+                try{  //Making Folder
+                    File folderForStoringFile = new File("D:/337_Sourav Dhali_6B");
+                    folderForStoringFile.mkdir();
+                }catch(Exception e){
+                    System.out.println("\n_______________________________________________________\n");
+                    System.out.println("The Folder Creating Is Failed!");
+                    System.out.println("_______________________________________________________\n");
+                }                
+                
+                try{  //Making File
+                    File textFileForResult = new File("D:/337_Sourav Dhali_6B/ResultOfFractionalKnapsack.txt");
+                    textFileForResult.createNewFile();
+                }catch(IOException e){
+                    System.out.println("\n_______________________________________________________\n");
+                    System.out.println("The Text File Creating Is Failed!");
+                    System.out.println("_______________________________________________________\n");
+                }
+                
+                try{  //Writing In File
+                    Formatter writeInTheFile = new Formatter("D:/337_Sourav Dhali_6B/ResultOfFractionalKnapsack.txt");
+                    
+                    writeInTheFile.format("_______________________________________________________\n\n");
+                    writeInTheFile.format("Solution : ");
+                    writeInTheFile.format("\n_______________________________________________________\n");
+                    writeInTheFile.format("\n\nName Of Item's Are : "+pickingItemName+"\n\nToal Profit Is     :  "+getingValue+" Unit.");
+                    
+                    writeInTheFile.close();
+                }catch(FileNotFoundException e){
+                    System.out.println("\n_______________________________________________________\n");
+                    System.out.println("The Text File Writing Is Failed!");
+                    System.out.println("_______________________________________________________\n");
+                } 
+                //File Output End.
+                
                 isError = false;
-            }
-            catch(Exception e){
+            } catch(Exception e){
                 System.out.println("\n_______________________________________________________\n");
                 System.out.println("Please Enter A Valid Input. Try Again From Beganing!");
                 System.out.println("_______________________________________________________\n");
