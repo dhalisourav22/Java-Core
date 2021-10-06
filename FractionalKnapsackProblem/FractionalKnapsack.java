@@ -41,7 +41,7 @@ public class FractionalKnapsack implements Comparable<FractionalKnapsack> {
                 System.out.println("_______________________________________________________\n");
             }
 
-            try {  //Writing In File
+            try {  //Writing In File(For Taking Input)
                 Formatter writeInTheFileFirstForInput = new Formatter("D:/FileFractionalKnapsack.txt");
                 writeInTheFileFirstForInput.format("3 50 P1 10 60 P2 20 100 P3 30 120");
                 writeInTheFileFirstForInput.close();
@@ -91,8 +91,8 @@ public class FractionalKnapsack implements Comparable<FractionalKnapsack> {
             }
 
             
-            //For File Output Or File Write(File Output Start).                
-            try {  //Making Folder
+            //File Output Start(For Showing Output).                
+            try {  //Making Folder(For Showing Output).
                 File folderForStoringFile = new File("D:/337_Sourav Dhali_6B");
                 folderForStoringFile.mkdir();
             } catch (Exception e) {
@@ -110,7 +110,7 @@ public class FractionalKnapsack implements Comparable<FractionalKnapsack> {
                 System.out.println("_______________________________________________________\n");
             }
 
-            try {  //Writing In File(Output Or Answer).
+            try {  //Writing In File(For Showing Output).
                 Formatter writeInTheFile = new Formatter("D:/337_Sourav Dhali_6B/ResultOfFractionalKnapsack.txt");
 
                 writeInTheFile.format("_______________________________________________________\n\n");
