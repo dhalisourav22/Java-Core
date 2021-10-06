@@ -30,8 +30,8 @@ public class FractionalKnapsack implements Comparable<FractionalKnapsack> {
     }
 
     public static void main(String[] args) {
-
-        try {
+        try {            
+            
             try {  //Making File(For Taking Input).
                 File textFileForInput = new File("D:/FileFractionalKnapsack.txt");
                 textFileForInput.createNewFile();
@@ -49,19 +49,20 @@ public class FractionalKnapsack implements Comparable<FractionalKnapsack> {
                 System.out.println("\n_______________________________________________________\n");
                 System.out.println("The Text File(For Taking Input) Writing Is Failed!");
                 System.out.println("_______________________________________________________\n");
-            }
+            }            
 
             File scanInput = new File("D:/FileFractionalKnapsack.txt");
             Scanner input = new Scanner(scanInput);
+            
 
             int numberOfItem = input.nextInt();
-            double capacityOfKnapsack = input.nextDouble();
+            double capacityOfKnapsack = input.nextDouble();            
 
             FractionalKnapsack[] k = new FractionalKnapsack[numberOfItem];  //Array Of Object.
             String iName;
             double iWeight, iValue, fraction;
 
-            for (int i = 0; i < numberOfItem; i++) {  //Loop For Taking Input.
+            for (int i = 0; i < numberOfItem; i++) {  //Loop Which Taking Input For Each Object Or Each Iteam.
                 iName = input.next();
                 iWeight = input.nextDouble();
                 iValue = input.nextDouble();
@@ -69,7 +70,8 @@ public class FractionalKnapsack implements Comparable<FractionalKnapsack> {
                 fraction = iValue / iWeight;           //Initialized Here Directly.         
                 k[i] = new FractionalKnapsack(iName, iWeight, iValue, fraction);
             }
-            Arrays.sort(k);
+            
+            Arrays.sort(k);   //Decendring Order.
 
             String pickingItemName = " ";
             double getingValue = 0;
@@ -116,7 +118,7 @@ public class FractionalKnapsack implements Comparable<FractionalKnapsack> {
                 writeInTheFile.format("_______________________________________________________\n\n");
                 writeInTheFile.format("Solution : ");
                 writeInTheFile.format("\n_______________________________________________________\n");
-                writeInTheFile.format("\n\nName Of Item's Are : " + pickingItemName + "\n\nToal Profit Is     :  " + getingValue + " Unit.");
+                writeInTheFile.format("\n\nName Of Item's Are : " + pickingItemName + "\n\nToal Profit Is     :  " + getingValue + " Unit.");  //Answer.
 
                 writeInTheFile.close();
             } catch (FileNotFoundException e) {
