@@ -1,4 +1,5 @@
 package CramersRue;
+
 public class GFG {
 static double determinantOfMatrix(double mat[][])
 {
